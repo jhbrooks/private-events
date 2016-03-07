@@ -1,10 +1,21 @@
 source 'https://rubygems.org'
 
-
+# Specify Ruby version
+ruby '2.2.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use bcrypt for secure passwords
+gem 'bcrypt', '3.1.7'
+# Use Faker for sample data
+gem 'faker', '1.4.2'
+# Use will_paginate for pagination
+gem 'will_paginate', '3.0.7'
+# Configure it to use Bootstrap's pagination styles
+gem 'bootstrap-will_paginate', '0.0.10'
+# Use Bootstrap for improved styling
+gem 'bootstrap-sass', '3.2.0.0'
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -32,16 +43,29 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-end
-
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
 end
 
+group :development, :test do
+  # Use sqlite3 as the development and test database for Active Record
+  gem 'sqlite3'
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  # Use guard to watch files for automatic testing
+  gem 'guard'
+end
+
+group :test do
+  gem 'minitest-reporters'
+  gem 'mini_backtrace'
+  gem 'guard-minitest'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
