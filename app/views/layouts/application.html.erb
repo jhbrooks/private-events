@@ -11,7 +11,9 @@
   <%= render "layouts/header" %>
   <div class="container">
     <% flash.each do |msg_type, msg| %>
-      <%= content_tag :div, msg, class: "alert alert-#{msg_type}" %>
+      <% if ["success", "danger", "notice"].include?(msg_type) %>
+        <%= content_tag :div, msg, class: "alert alert-#{msg_type}" %>
+      <% end %>
     <% end %>
     <%= yield %>
     <%= debug(params) if Rails.env.development? %>

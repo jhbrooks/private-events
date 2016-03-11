@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:index, :show]
+
   def index
     @users = User.paginate(page: params[:page])
   end
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Welcome to the party!"
+      log_in @user
       redirect_to @user
     else
       render :new

@@ -4,5 +4,11 @@
     A private event hosting app built for
     <a href="http://www.theodinproject.com/">The Odin Project</a>.
   </h2>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% if logged_in? %>
+      <%= link_to "View profile", user_path(current_user),
+                                  class: "btn btn-lg btn-primary" %>
+    <% else %>
+      <%= link_to "Sign up now!", signup_path,
+                                  class: "btn btn-lg btn-primary" %>
+    <% end %>
 </div>
