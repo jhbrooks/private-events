@@ -89,14 +89,16 @@ aside {
   }
   span {
     display: block;
-    margin-bottom: 3px;
     line-height: 1;
+  }
+  a {
+    margin-top: 8px;
   }
   h1 {
     font-size: 1.4em;
     text-align: left;
     letter-spacing: -1px;
-    margin-bottom: 3px;
+    margin-bottom: 8px;
     margin-top: 0px;
   }
 }
@@ -152,5 +154,53 @@ input {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+  span {
+    display: block;
+    line-height: 1;
+  }
+  a {
+    display: block;
+    margin-bottom: 8px;
+  }
+}
+
+/* events */
+
+.events {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .event_link {
+    margin-top: 0;
+    margin-bottom: 8px;
+    display: block;
+    padding-top: 0;
+  }
+}
+
+.event_date {
+  display: block;
+}
+.timestamp {
+  color: $gray-light;
+  display: block;
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+/* events show */
+
+.event_show {
+  .event_date, .timestamp {
+    margin-left: 60px;
   }
 }

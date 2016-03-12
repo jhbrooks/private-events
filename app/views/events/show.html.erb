@@ -1,0 +1,21 @@
+<% provide(:title, @event.name) %>
+<div class="row event_show">
+  <div class="col-md-8 col-md-offset-2" >
+    <h1><%= @event.name %></h1>
+    <h2 class="host">
+      Hosted by: 
+      <%= link_to @event.host.name, @event.host %>
+    </h2>
+    <p class="description"><%= @event.description %></p>
+    <span class="event_date">
+      <%= formatted_date(@event.event_date, "Begins on ") %>
+    </span>
+    <span class="timestamp">
+      Created <%= time_ago_in_words(@event.created_at) %> ago.
+      <% if current_user == @event.host %>
+        <%= link_to "delete", @event, method: :delete,
+                                      data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </span>
+  </div>
+</div>

@@ -20,3 +20,14 @@ User.create!(name: "Example User",
                password: password,
                password_confirmation: password)
 end
+
+users = User.take(5)
+users.each do |user|
+  5.times do
+    name = Faker::Lorem.words(rand(1..4)).join(" ").capitalize
+    description = Faker::Lorem.paragraph
+    user.events_as_host.create!(name: name,
+                                description: description,
+                                event_date: Faker::Time.forward)
+  end
+end

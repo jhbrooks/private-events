@@ -3,10 +3,21 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1><%= @user.name %></h1>
-      <p>Member since <%= @user.created_at %></p>
+      <span class="timestamp">
+        <%= formatted_date(@user.created_at, "Member since ") %>
+      </span>
+      <% if current_user == @user %>
+        <%= link_to "Create new event", new_event_path,
+                                        class: "btn btn-primary" %>
+      <% end %>
     </section>
   </aside>
   <div class="col-md-8">
-    <h3>Hosted events</h3>
+    <% if @user.events_as_host.any? %>
+      <h3>Hosted events (<%= @user.events_as_host.count %>)</h3>
+      <ol class="events">
+        <%= render @events %>
+      </ol>
+    <% end %>
   </div>
 </div>

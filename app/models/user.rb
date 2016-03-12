@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token
 
+  has_many :events_as_host, foreign_key: :host_id, class_name: "Event"
+
   default_scope -> { order(created_at: :desc) }
   before_save { self.email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }

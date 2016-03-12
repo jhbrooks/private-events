@@ -10,9 +10,10 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_template "users/index"
     assert_select "div.pagination"
-    assert_select "a[href=?]", user_path(@user), text: @user.name
-    User.offset(1).paginate(page: 1).each do |user|
+    User.paginate(page: 1).each do |user|
       assert_select "a[href=?]", user_path(user), text: user.name
+      assert_match formatted_date(user.created_at, "Member since "),
+                   response.body
     end
   end
 end

@@ -1,0 +1,22 @@
+<h1>Create new event</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@event) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_area :description, size: "60x5" %>
+      </div>
+
+      <%= f.label :event_date %>
+      <%= f.datetime_field :event_date, class: "form-control" %>
+
+      <%= f.submit "Create event", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
