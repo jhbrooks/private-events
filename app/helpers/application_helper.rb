@@ -6,6 +6,6 @@ module ApplicationHelper
   end
 
   def formatted_date(date, lead_in)
-    date.strftime("#{lead_in}%-m/%-d/%y at %-l:%M %p %Z")
+    date.strftime("#{lead_in}%-m/%-d/%y at %-l:%M %p")
   end
 end

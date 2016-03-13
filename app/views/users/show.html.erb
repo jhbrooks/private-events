@@ -4,7 +4,7 @@
     <section class="user_info">
       <h1><%= @user.name %></h1>
       <span class="timestamp">
-        <%= formatted_date(@user.created_at, "Member since ") %>
+        Member for <%= time_ago_in_words(@user.created_at) %>
       </span>
       <% if current_user == @user %>
         <%= link_to "Create new event", new_event_path,

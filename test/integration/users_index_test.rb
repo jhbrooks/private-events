@@ -12,8 +12,7 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     assert_select "div.pagination"
     User.paginate(page: 1).each do |user|
       assert_select "a[href=?]", user_path(user), text: user.name
-      assert_match formatted_date(user.created_at, "Member since "),
-                   response.body
+      assert_match "Member for ", response.body
     end
   end
 end

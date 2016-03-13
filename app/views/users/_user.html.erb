@@ -1,6 +1,6 @@
 <li>
   <%= link_to user.name, user_path(user) %>
   <span class="timestamp">
-    <%= formatted_date(user.created_at, "Member since ") %>
+    Member for <%= time_ago_in_words(user.created_at) %>
   </span>
 </li>
