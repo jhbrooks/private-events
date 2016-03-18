@@ -6,7 +6,7 @@ class UsersShowTest < ActionDispatch::IntegrationTest
     @different_user = users(:two)
   end
 
-  test "user profile with links to hosted events and total count" do
+  test "user profile with links to events and total counts" do
     log_in_as(@user)
     get user_path(@user)
     assert_template "users/show"
@@ -14,8 +14,19 @@ class UsersShowTest < ActionDispatch::IntegrationTest
     assert_select "h1", text: @user.name
     assert_match "Member for ", response.body
     assert_select "a[href=?]", new_event_path, text: "Create new event"
+
+    # Hosted events
     assert_match @user.events_as_host.count.to_s, response.body
     @user.events_as_host.each do |event|
+      assert_select "a[href=?]", event_path(event), text: event.name
+      assert_match formatted_date(event.event_date, "Begins on "),
+                                  response.body
+    end
+
+    # Attending events
+    attending_events = @user.events_as_guest.where('invites.reply' => 'yes')
+    assert_match attending_events.count.to_s, response.body
+    attending_events.each do |event|
       assert_select "a[href=?]", event_path(event), text: event.name
       assert_match formatted_date(event.event_date, "Begins on "),
                                   response.body

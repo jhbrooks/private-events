@@ -7,7 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @events = @user.events_as_host
+    @events_as_host = @user.events_as_host
+    @attending_events = @user.events_as_guest.where('invites.reply' => 'yes')
   end
 
   def new

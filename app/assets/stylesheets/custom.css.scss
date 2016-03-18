@@ -79,6 +79,9 @@ aside {
   section.user_info {
     margin-top: 20px;
   }
+  section.invite_info {
+    margin-top: 20px;
+  }
   section {
     padding: 10px 0;
     margin-top: 20px;
@@ -91,6 +94,9 @@ aside {
     display: block;
     line-height: 1;
   }
+  .invite_border {
+    border-top: 1px solid #e8e8e8;
+  }
   a {
     margin-top: 8px;
   }
@@ -100,6 +106,17 @@ aside {
     letter-spacing: -1px;
     margin-bottom: 8px;
     margin-top: 0px;
+  }
+  h3 {
+    font-size: 1em;
+    text-align: left;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    margin-top: 0px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
   }
 }
 
@@ -146,7 +163,27 @@ input {
   }
 }
 
+.users {
+  .invite_checkbox {
+    input {
+      width: auto;
+      margin-top: 3px;
+      margin-right: 5px;
+    }
+    span {
+      display: inline;
+      vertical-align: -1px;
+      font-weight: normal;
+    }
+  }
+}
+
 #session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+#invite_user_id {
   width: auto;
   margin-left: 0;
 }
@@ -208,5 +245,57 @@ aside {
 .event_show {
   .event_date, .timestamp {
     margin-left: 60px;
+  }
+}
+
+/* invites */
+
+.invites {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .event_link {
+    margin-top: 0;
+    margin-bottom: 8px;
+    padding-top: 0;
+  }
+  span {
+    display: block;
+  }
+  .change_links {
+    margin-top: 8px;
+  }
+}
+
+/* invites edit */
+
+.current_reply {
+  padding-top: 10px;
+  border-top: 1px solid #e8e8e8;
+  display: block;
+  margin-top: 8px;
+}
+
+.reply_form {
+  input, textarea, .uneditable-input {
+    width: auto;
+  }
+
+  .radio-inline {
+    input {
+      margin-top: 3px;
+    }
+    span {
+      vertical-align: 3px;
+      font-weight: normal;
+    }
+  }
+
+  .btn {
+    margin-top: 8px;
+    display: block;
   }
 }

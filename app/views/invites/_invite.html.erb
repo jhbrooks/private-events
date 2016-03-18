@@ -1,0 +1,15 @@
+<li>
+  <span class="event_link">
+    <%= link_to invite.event.name, event_path(invite.event) %>
+  </span>
+  <span>
+    Hosted by: 
+    <%= link_to invite.event.host.name, user_path(invite.event.host) %>
+  </span>
+  <span>Current reply: <%= invite.reply %></span>
+  <span class="change_links">
+    <%= link_to "change reply", edit_user_invite_path(invite.user, invite) %>
+    <%= link_to "delete", invite, method: :delete,
+                                  data: { confirm: "Are you sure?" } %>
+  </span>
+</li>

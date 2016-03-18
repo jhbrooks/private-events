@@ -33,12 +33,4 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:name, :description, :event_date)
     end
-
-    # Before filters
-
-    # Confirms a current user as the host of the target event.
-    def host_user
-      @event = current_user.events_as_host.find_by(id: params[:id])
-      redirect_to root_url if @event.nil?
-    end
 end

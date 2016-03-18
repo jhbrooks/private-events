@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   root 'static_pages#home'
 
   get 'signup' => 'users#new'
@@ -7,8 +7,15 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   
-  resources :users, only: [:index, :show, :new, :create]
-  resources :events, only: [:show, :new, :create, :destroy]
+  resources :users, only: [:index, :show, :new, :create] do
+    resources :invites, only: [:index, :edit, :update]
+  end
+  # Post to new_event_invite_path for invites#create
+  post '/events/:event_id/invites/new' => 'invites#create'
+  resources :events, only: [:show, :new, :create, :destroy] do
+    resources :invites, only: :new
+  end
+  resources :invites, only: :destroy
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

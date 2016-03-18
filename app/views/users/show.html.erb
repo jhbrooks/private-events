@@ -1,23 +1,22 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1><%= @user.name %></h1>
-      <span class="timestamp">
-        Member for <%= time_ago_in_words(@user.created_at) %>
-      </span>
-      <% if current_user == @user %>
-        <%= link_to "Create new event", new_event_path,
-                                        class: "btn btn-primary" %>
+  <%= render "shared/user_sidebar" %>
+  <div class="col-md-4">
+    <h3>Hosted events (<%= @events_as_host.count %>)</h3>
+    <ol class="events">
+      <% if @events_as_host.none? %>
+        <li>Currently hosting no events.</li>
       <% end %>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <% if @user.events_as_host.any? %>
-      <h3>Hosted events (<%= @user.events_as_host.count %>)</h3>
-      <ol class="events">
-        <%= render @events %>
-      </ol>
-    <% end %>
+      <%= render @events_as_host %>
+    </ol>
+  </div>
+  <div class="col-md-4">
+    <h3>Attending events (<%= @attending_events.count %>)</h3>
+    <ol class="events">
+      <% if @attending_events.none? %>
+        <li>Currently attending no events.</li>
+      <% end %>
+      <%= render @attending_events %>
+    </ol>
   </div>
 </div>

@@ -10,6 +10,11 @@ two:
   email: ex_two@example.com
   password_digest: <%= User.digest("password") %>
 
+three:
+  name: Ex_three
+  email: ex_three@example.com
+  password_digest: <%= User.digest("password") %>
+
 most_recent:
   name: Most_recent
   email: most_recent@example.com
